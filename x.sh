@@ -43,11 +43,11 @@ _exiftool() {
 # binwalk & foremost
 _extract() {
         echo "$line Binwalk $line"
-        out_dir="_binwalk.$file_path"
+        out_dir=$file_path."_binwalk"
         echo "$(binwalk -e $file_path -C $out_dir)"
 
         echo "$line Foremost $line"
-        out_dir="_foremost.$file_path"
+        out_dir=$file_path."_foremost"
         echo "$(foremost -i $file_path -o $out_dir)"
 
         echo -e "\n"
