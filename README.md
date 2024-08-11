@@ -154,3 +154,12 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 Processing: 1.jpg
 |*|
 ```
+## Easy delete
+```bash
+kali@kali:~/WinDownloads$ ls
+题目.jpg  题目.jpg._binwalk  题目.jpg._foremost
+kali@kali:~/WinDownloads$ rm 题目.jpg* -rf
+```
+## Easy click
+![image](https://github.com/user-attachments/assets/a143e501-ba9c-44de-ad94-62a1eb2b4dde)
+
