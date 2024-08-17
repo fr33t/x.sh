@@ -12,8 +12,10 @@ _file() {
 
 # strings
 _strings() {
-        echo "$line Strings-Default $line"
-        echo "$(strings -a $file_path)"
+        echo "$line Strings-Default Head 10 and Tail $line"
+        echo "$(strings -a $file_path | head -n 10)"
+        echo "$line"
+        echo "$(strings -a $file_path | tail -n 10)"
 
         echo "$line Strings-Flag $line"
         echo "$(strings $file_path | grep "{.*}")"
@@ -27,8 +29,9 @@ _strings() {
 
 # hexdump
 _hexdump() {
-        echo "$line Hex Dump $line"
-        echo "$(hexdump -C $file_path)"
+        echo "$line Hex Dump Head 160 and Tail $line"
+        echo "$(head -c 160 $file_path | hexdump -C)"
+        echo "$(tail -c 160 $file_path | hexdump -C)"
         echo -e "\n"
 
 }
@@ -42,16 +45,16 @@ _exiftool() {
 
 # binwalk & foremost
 _extract() {
+        echo "$line Foremost $line"
+        out_dir="$file_path._foremost"
+        echo "$(foremost -i $file_path -o $out_dir)"
+        echo -e "\n"
+
         echo "$line Binwalk $line"
         out_dir="$file_path._binwalk"
         echo "$(binwalk -e $file_path -C $out_dir)"
         echo -e "\n"
 
-        echo "$line Foremost $line"
-        out_dir="$file_path._foremost"
-        echo "$(foremost -v -i $file_path -o $out_dir)"
-
-        echo -e "\n"
 
 }
 if [ ! $file_path ]; then
